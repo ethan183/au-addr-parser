@@ -1,0 +1,6 @@
+include *.bat
+include *.py
+include *.rst
+include LICENSE
+include Makefile
+recursive-include tests *.py
