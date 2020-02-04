@@ -8,11 +8,20 @@ class AbAddressUtility(object):
 
     For example, an address could have many forms:
 
-        Unit 2 42 Example ST, STANMORE, NSW 2048,
-        2/42 EXAMPLE ST, STANMORE NSW 2048,
-        U2 42-44 EXAMPLE STEET, STANMORE, NSW 2048,
+        Unit 2 42 Example ST, STANMORE, NSW 2048
+
+        2/42 EXAMPLE ST, STANMORE NSW 2048
+
+        U2 42-44 EXAMPLE STEET, STANMORE, NSW 2048
+
         2/42 EXAMPLE STEET, STANMORE, NSW 2048
-        2/42-44 Example Street, Stanmore, NSW 2048.
+        
+        2/42-44 Example Street, Stanmore, NSW 2048
+
+    :param addr_string: address string to parse.
+
+    >>> AbAddressUtility('U2 42-44 Example St, STANMORE, NSW 2048')
+    <AbAddressUtility(addr_string='U2 42-44 Example St, STANMORE, NSW 2048')>
 
     This class can parse all forms above, and other common forms and 
     assemble different forms as needed.
@@ -36,14 +45,7 @@ class AbAddressUtility(object):
     """
 
     def __init__(self, addr_string):
-        """Constructor.
 
-        :param addr_string: address string to parse.
-
-        >>> AbAddressUtility('U2 42-44 Example St, STANMORE, NSW 2048')
-        <AbAddressUtility(addr_string='U2 42-44 Example St, STANMORE, NSW 2048')>
-
-        """
         self.addr_string = addr_string
         self._addr_string = addr_string.upper()
         self._addr_string = self._clean_address(self._addr_string)
