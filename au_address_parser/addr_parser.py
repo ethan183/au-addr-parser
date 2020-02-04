@@ -190,7 +190,7 @@ class AbAddressUtility(object):
         """Create an AbAddressUtility class from a dict containing GNAF
         information.
 
-        :params **kwags: a dict from GNAF format.
+        :params kwags: a dict from GNAF format.
         """
         a = {
             'flat_number_prefix': kwags.get('flat_number_prefix', None),
@@ -224,7 +224,7 @@ class AbAddressUtility(object):
         """Create an AbAddressUtility class from a dict containing ELK
         information.
 
-        :params **kwags: a dict from ELK format.
+        :params kwags: a dict from ELK format.
         """
         a = {
             'flat_part': kwags.get('flat_part', None),
