@@ -5,6 +5,9 @@
 
 Painlessly Parsing AU Addresses
 ==========================================
+Installation
+
+>>> pip3 install au-addr-parser
 
 .. toctree::
    :maxdepth: 2
