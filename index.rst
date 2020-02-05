@@ -8,7 +8,6 @@ Painlessly Parsing AU Addresses
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
 .. autoclass:: au_address_parser.AbAddressUtility
    :members:
