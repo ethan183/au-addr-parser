@@ -20,8 +20,12 @@ class AbAddressUtility(object):
 
     :param addr_string: address string to parse.
 
-    >>> AbAddressUtility('U2 42-44 Example St, STANMORE, NSW 2048')
+    >>> from au_address_parser import AbAddressUtility
+    >>> addr = AbAddressUtility('U2 42-44 Example St, STANMORE, NSW 2048')
+    >>> addr
     <AbAddressUtility(addr_string='U2 42-44 Example St, STANMORE, NSW 2048')>
+     
+
 
     This class can parse all forms above, and other common forms and 
     assemble different forms as needed.
@@ -33,15 +37,51 @@ class AbAddressUtility(object):
     or assemble parts into different forms of addresses.
 
     :ivar addr_string: The string originally passed to the instance on creation. 
-                       e.g. 'Unit 2 42-44 Example St, STANMORE, NSW 2048'
+
+                        >>> addr.addr_string
+                        'Unit 2 42-44 Example St, STANMORE, NSW 2048'
+
     :ivar address_abbr: Full address but abbreviation of street type.
-                        e.g. '2/42-44 EXAMPLE ST, STANMORE NSW 2048'
+
+                        >>> addr.address_abbr
+                        '2/42-44 EXAMPLE ST, STANMORE NSW 2048'
+
     :ivar std_address:  Standardised address.
-                        e.g. '2/42 EXAMPLE ST, STANMORE NSW 2048'
+
+                        >>> addr.std_address
+                        '2/42 EXAMPLE ST, STANMORE NSW 2048'
+
     :ivar address:  User friendly full address.
-                    e.g. '2/42-44 Example Street, Stanmore NSW 2048'
+
+                    >>> addr.address
+                    '2/42-44 Example Street, Stanmore NSW 2048'
+
     :ivar parsed_addr:  Break address into parts and return a dict.
+
+                        >>> addr.parsed_addr
+                        {'flat_number_prefix': None,
+                        'flat_number': '2',
+                        'flat_number_suffix': None,
+                        'number_first_prefix': None,
+                        'number_first': '42',
+                        'number_first_suffix': None,
+                        'number_last_prefix': None,
+                        'number_last': '44',
+                        'number_last_suffix': None,
+                        'street_name': 'EXAMPLE',
+                        'street_type_abbr': 'ST',
+                        'street_type': 'STREET',
+                        'street_suffix': None,
+                        'street_suffix_abbr': None,
+                        'locality': 'STANMORE',
+                        'state': 'NSW',
+                        'post': '2048'}
+
     :ivar prop_id: MD5 value for the standardised address.
+
+                   >>> addr.prop_id
+                   'b8b3b969b70b290b44900e070fcf4b37'
+
     """
 
     def __init__(self, addr_string):
@@ -191,6 +231,28 @@ class AbAddressUtility(object):
         information.
 
         :params kwags: a dict from GNAF format.
+
+        >>> gnaf = {'flat_number_prefix': None,
+                    'flat_number': '2',
+                    'flat_number_suffix': None,
+                    'number_first_prefix': None,
+                    'number_first': '42',
+                    'number_first_suffix': None,
+                    'number_last_prefix': None,
+                    'number_last': '44',
+                    'number_last_suffix': None,
+                    'street_name': 'EXAMPLE',
+                    'street_type_abbr': 'ST',
+                    'street_type': 'STREET',
+                    'street_suffix': None,
+                    'street_suffix_abbr': None,
+                    'locality_name': 'STANMORE',
+                    'state_abbreviation': 'NSW',
+                    'postcode': '2048'}
+        >>> addr = AbAddressUtility.from_gnaf_dict(**gnaf)
+        >>> addr
+        <AbAddressUtility(addr_string='2/42-44 Example  , Stanmore NSW 2048')>
+
         """
         a = {
             'flat_number_prefix': kwags.get('flat_number_prefix', None),
@@ -221,11 +283,7 @@ class AbAddressUtility(object):
 
     @classmethod
     def from_elk_search(cls, **kwags):
-        """Create an AbAddressUtility class from a dict containing ELK
-        information.
 
-        :params kwags: a dict from ELK format.
-        """
         a = {
             'flat_part': kwags.get('flat_part', None),
             'number_first': kwags.get('number_first', None),
