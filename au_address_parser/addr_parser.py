@@ -4,19 +4,6 @@ from hashlib import md5
 
 class AbAddressUtility(object):
     """
-    This class parses common forms of australian addresses. 
-
-    For example, an address could have many forms:
-
-        Unit 2 42 Example ST, STANMORE, NSW 2048
-
-        2/42 EXAMPLE ST, STANMORE NSW 2048
-
-        U2 42-44 EXAMPLE STEET, STANMORE, NSW 2048
-
-        2/42 EXAMPLE STEET, STANMORE, NSW 2048
-        
-        2/42-44 Example Street, Stanmore, NSW 2048
 
     :param addr_string: address string to parse.
 
