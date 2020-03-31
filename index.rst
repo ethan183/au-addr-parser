@@ -22,7 +22,7 @@ For example, an address could have many forms:
 Installation
 ------------------------------------------
 
->>> pip3 install au-addr-parser
+>>> pip3 install au-address-parser
 
 Quickstart
 ------------------------------------------
