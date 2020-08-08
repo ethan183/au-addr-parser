@@ -22,7 +22,7 @@ copyright = '2020, Ethan Zhao'
 author = 'Ethan Zhao'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0.0'
+release = '1.0.1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -55,9 +55,9 @@ html_theme = 'alabaster'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# If you have your own conf.py file, it overrides Read the Doc's default conf.py. 
-# By default, Sphinx expects the master doc to be contents. Read the Docs will 
-# set master doc to index instead (or whatever it is you have specified in your 
+# If you have your own conf.py file, it overrides Read the Doc's default conf.py.
+# By default, Sphinx expects the master doc to be contents. Read the Docs will
+# set master doc to index instead (or whatever it is you have specified in your
 # settings). Try adding this to your conf.py:
 
 master_doc = 'index'
